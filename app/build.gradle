@@ -36,4 +36,7 @@ dependencies {
     // Lifecycle and ViewModel
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    // RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }
