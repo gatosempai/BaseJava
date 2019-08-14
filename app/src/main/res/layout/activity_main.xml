@@ -3,7 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LandingActivity">
+    tools:context=".feature.landing.LandingActivity">
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewLandingFeatures"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
