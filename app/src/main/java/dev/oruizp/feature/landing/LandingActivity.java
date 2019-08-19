@@ -1,5 +1,6 @@
 package dev.oruizp.feature.landing;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -27,7 +28,7 @@ public class LandingActivity extends AppCompatActivity implements LandingDataAda
     @Override
     public void onItemClickListener(LandingData.Feature feature) {
         Toast.makeText(this, feature.name(), Toast.LENGTH_SHORT).show();
-
+        goToFeature(feature);
     }
 
     private void setUpRecyclerView() {
@@ -37,6 +38,10 @@ public class LandingActivity extends AppCompatActivity implements LandingDataAda
         recyclerView.setAdapter(landingDataAdapter);
     }
 
+    private void goToFeature(LandingData.Feature feature) {
+        Intent launchIntent = new Intent();
+
+    }
 
     private List<LandingData> fillList() {
         ArrayList<LandingData> list = new ArrayList<>();

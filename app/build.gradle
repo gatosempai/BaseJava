@@ -36,7 +36,13 @@ dependencies {
     // Lifecycle and ViewModel
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    // Worker
+    implementation "androidx.work:work-runtime:$worker_version"
 
     // RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.android.material:material:1.0.0'
 }
