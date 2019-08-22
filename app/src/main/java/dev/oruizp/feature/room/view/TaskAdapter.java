@@ -59,7 +59,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
         private ItemTaskBinding itemView;
 
-        public TaskViewHolder(@NonNull ItemTaskBinding itemView) {
+        TaskViewHolder(@NonNull ItemTaskBinding itemView) {
             super(itemView.getRoot());
             this.itemView = itemView;
         }
@@ -67,10 +67,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         void bindView(TaskEntity item) {
             itemView.taskDescription.setText(item.getDescription());
             itemView.taskUpdatedAt.setText(dateFormat.format(item.getUpdateAt()));
-            itemView.priorityTextView.setText(item.getPriority());
+            itemView.priorityTextView.setText(String.valueOf(item.getPriority()));
             itemView.getRoot().setOnClickListener(this);
         }
-
 
         @Override
         public void onClick(View v) {

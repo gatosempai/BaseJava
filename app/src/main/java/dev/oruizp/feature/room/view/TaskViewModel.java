@@ -2,8 +2,8 @@ package dev.oruizp.feature.room.view;
 
 import android.app.Application;
 
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
 
 import java.util.Date;
 import java.util.List;
@@ -11,13 +11,14 @@ import java.util.List;
 import dev.oruizp.feature.room.model.db.TaskEntity;
 import dev.oruizp.feature.room.model.repository.TaskRepository;
 
-public class TaskViewModel extends ViewModel {
+public class TaskViewModel extends AndroidViewModel {
 
     private TaskRepository taskRepository;
     private LiveData<List<TaskEntity>> tasks;
     private LiveData<TaskEntity> task;
 
     public TaskViewModel(Application application) {
+        super(application);
         taskRepository = new TaskRepository(application);
     }
 

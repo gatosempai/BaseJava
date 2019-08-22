@@ -2,6 +2,7 @@ package dev.oruizp.feature.room.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -16,19 +17,21 @@ import dev.oruizp.databinding.ActivityTaskBinding;
 import dev.oruizp.feature.room.model.db.AppDatabase;
 import dev.oruizp.feature.room.model.db.TaskEntity;
 
-public class TaskActivity extends AppCompatActivity implements TaskAdapter.ItemClickListener {
+public class TaskActivity extends AppCompatActivity implements TaskAdapter.ItemClickListener,
+        View.OnClickListener {
 
-    private ActivityTaskBinding activityTaskBinding;
+    private ActivityTaskBinding binding;
     private TaskAdapter taskAdapter;
     private AppDatabase appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityTaskBinding = DataBindingUtil.setContentView(this, R.layout.activity_task);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_task);
         setUpRecyclerView();
         setUpDb();
         setUpViewModel();
+        setUpView();
     }
 
     @Override
@@ -54,7 +57,17 @@ public class TaskActivity extends AppCompatActivity implements TaskAdapter.ItemC
 
     private void setUpRecyclerView() {
         taskAdapter = new TaskAdapter(this);
-        activityTaskBinding.recyclerViewTasks.setLayoutManager(new LinearLayoutManager(this));
-        activityTaskBinding.recyclerViewTasks.setAdapter(taskAdapter);
+        binding.recyclerViewTasks.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerViewTasks.setAdapter(taskAdapter);
+    }
+
+    private void setUpView() {
+        binding.fab.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(this, TaskDetailActivity.class);
+        startActivity(intent);
     }
 }
