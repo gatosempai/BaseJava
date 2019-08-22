@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".feature.room.view.TaskDetailActivity"></activity>
+        <service
+            android:name=".feature.intentservice.WaterReminderIntentService"
+            android:exported="false"></service>
+
+        <activity android:name=".feature.intentservice.IntentActivity" />
+        <activity android:name=".feature.room.view.TaskDetailActivity" />
         <activity android:name=".feature.room.view.TaskActivity" />
         <activity android:name=".feature.landing.LandingActivity">
             <intent-filter>

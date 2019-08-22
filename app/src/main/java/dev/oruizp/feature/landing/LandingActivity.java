@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dev.oruizp.R;
+import dev.oruizp.feature.intentservice.IntentActivity;
 import dev.oruizp.feature.room.view.TaskActivity;
 
 public class LandingActivity extends AppCompatActivity implements LandingDataAdapter.ItemClickListener {
@@ -40,8 +41,29 @@ public class LandingActivity extends AppCompatActivity implements LandingDataAda
     }
 
     private void goToFeature(LandingData.Feature feature) {
-        Intent launchIntent = new Intent(this, TaskActivity.class);
-        startActivity(launchIntent);
+        Intent launchIntent;
+        switch (feature) {
+            case PAGING:
+                //launchIntent = new Intent(this, TaskActivity.class);
+                //startActivity(launchIntent);
+                break;
+            case LIVEDATA:
+                launchIntent = new Intent(this, TaskActivity.class);
+                startActivity(launchIntent);
+                break;
+            case BROADCAST:
+                //launchIntent = new Intent(this, TaskActivity.class);
+                //startActivity(launchIntent);
+                break;
+            case SERVICE:
+                launchIntent = new Intent(this, IntentActivity.class);
+                startActivity(launchIntent);
+                break;
+            case ROOM:
+                launchIntent = new Intent(this, TaskActivity.class);
+                startActivity(launchIntent);
+                break;
+        }
     }
 
     private List<LandingData> fillList() {
