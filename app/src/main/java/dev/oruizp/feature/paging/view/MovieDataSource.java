@@ -1,5 +1,8 @@
 package dev.oruizp.feature.paging.view;
 
+import android.os.Handler;
+import android.os.Looper;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
@@ -24,11 +27,16 @@ public class MovieDataSource extends PageKeyedDataSource<Long, Movie> {
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Long> params, @NonNull final LoadInitialCallback<Long, Movie> callback) {
         listMutableLiveData = movieRepository.getMoviesWithPaging(apiKey);
-        listMutableLiveData.observeForever(new Observer<List<Movie>>() {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
-            public void onChanged(List<Movie> movies) {
-                callback.onResult(movies, null, 2L);
-                listMutableLiveData.removeObserver(this);
+            public void run() {
+                listMutableLiveData.observeForever(new Observer<List<Movie>>() {
+                    @Override
+                    public void onChanged(List<Movie> movies) {
+                        callback.onResult(movies, null, 2L);
+                        listMutableLiveData.removeObserver(this);
+                    }
+                });
             }
         });
     }
@@ -41,11 +49,16 @@ public class MovieDataSource extends PageKeyedDataSource<Long, Movie> {
     @Override
     public void loadAfter(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Movie> callback) {
         listMutableLiveData = movieRepository.getMoviesWithPaging(apiKey);
-        listMutableLiveData.observeForever(new Observer<List<Movie>>() {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
-            public void onChanged(List<Movie> movies) {
-                callback.onResult(movies, params.key + 1);
-                listMutableLiveData.removeObserver(this);
+            public void run() {
+                listMutableLiveData.observeForever(new Observer<List<Movie>>() {
+                    @Override
+                    public void onChanged(List<Movie> movies) {
+                        callback.onResult(movies, params.key + 1);
+                        listMutableLiveData.removeObserver(this);
+                    }
+                });
             }
         });
     }

@@ -13,6 +13,7 @@ import java.util.List;
 
 import dev.oruizp.R;
 import dev.oruizp.feature.intentservice.IntentActivity;
+import dev.oruizp.feature.paging.view.MoviesActivity;
 import dev.oruizp.feature.room.view.TaskActivity;
 
 public class LandingActivity extends AppCompatActivity implements LandingDataAdapter.ItemClickListener {
@@ -44,10 +45,11 @@ public class LandingActivity extends AppCompatActivity implements LandingDataAda
         Intent launchIntent;
         switch (feature) {
             case PAGING:
-                //launchIntent = new Intent(this, TaskActivity.class);
-                //startActivity(launchIntent);
+                launchIntent = new Intent(this, MoviesActivity.class);
+                startActivity(launchIntent);
                 break;
             case LIVEDATA:
+            case ROOM:
                 launchIntent = new Intent(this, TaskActivity.class);
                 startActivity(launchIntent);
                 break;
@@ -57,10 +59,6 @@ public class LandingActivity extends AppCompatActivity implements LandingDataAda
                 break;
             case SERVICE:
                 launchIntent = new Intent(this, IntentActivity.class);
-                startActivity(launchIntent);
-                break;
-            case ROOM:
-                launchIntent = new Intent(this, TaskActivity.class);
                 startActivity(launchIntent);
                 break;
         }
