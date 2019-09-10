@@ -69,7 +69,7 @@ public class LandingActivity extends AppCompatActivity implements LandingDataAda
         list.add(new LandingData("How to use Paging", LandingData.Feature.PAGING));
         list.add(new LandingData("How to use Room", LandingData.Feature.ROOM));
         list.add(new LandingData("How to use LiveData", LandingData.Feature.LIVEDATA));
-        list.add(new LandingData("How to use Broadcast", LandingData.Feature.BROADCAST));
+        list.add(new LandingData("How to use Broadcast and Notifications", LandingData.Feature.BROADCAST));
         list.add(new LandingData("How to use Service", LandingData.Feature.SERVICE));
         return list;
     }

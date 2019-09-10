@@ -89,6 +89,7 @@ public class Movie extends BaseObservable implements Parcelable {
     @SerializedName("release_date")
     @Expose
     private String releaseDate;
+    private String finalPosterPath;
 
     protected Movie(Parcel in) {
         this.voteCount = ((Integer) in.readValue((Integer.class.getClassLoader())));
@@ -105,6 +106,7 @@ public class Movie extends BaseObservable implements Parcelable {
         this.adult = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
         this.overview = ((String) in.readValue((String.class.getClassLoader())));
         this.releaseDate = ((String) in.readValue((String.class.getClassLoader())));
+        this.finalPosterPath = ((String) in.readValue((String.class.getClassLoader())));
     }
 
     public Movie() {
@@ -259,6 +261,15 @@ public class Movie extends BaseObservable implements Parcelable {
         notifyPropertyChanged(BR.releaseDate);
     }
 
+    @Bindable
+    public String getFinalPosterPath() {
+        return finalPosterPath;
+    }
+
+    public void setFinalPosterPath(String finalPosterPath) {
+        this.finalPosterPath = finalPosterPath;
+    }
+
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(voteCount);
         dest.writeValue(id);
@@ -274,6 +285,7 @@ public class Movie extends BaseObservable implements Parcelable {
         dest.writeValue(adult);
         dest.writeValue(overview);
         dest.writeValue(releaseDate);
+        dest.writeValue(finalPosterPath);
     }
 
     public int describeContents() {

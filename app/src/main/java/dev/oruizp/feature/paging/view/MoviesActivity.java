@@ -71,6 +71,7 @@ public class MoviesActivity extends AppCompatActivity implements MoviesDataAdapt
             public void onChanged(PagedList<Movie> movies) {
                 moviesDataAdapter.submitList(movies);
                 moviesDataAdapter.notifyDataSetChanged();
+                binding.swipeLayout.setRefreshing(false);
             }
         });
     }

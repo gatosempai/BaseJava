@@ -27,7 +27,7 @@
                     android:layout_height="200dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:scaleType="fitXY"
-                    bind:posterPath="@{movie.posterPath}" />
+                    bind:posterPath="@{movie.finalPosterPath}" />
 
                 <TextView
                     android:id="@+id/tvTitle"

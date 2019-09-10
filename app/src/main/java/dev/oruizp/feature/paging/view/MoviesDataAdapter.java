@@ -52,7 +52,7 @@ public class MoviesDataAdapter extends PagedListAdapter<Movie, MoviesDataAdapter
         void bindView(final Movie item) {
             // TODO improve the posterPath format
             String imagePath = "https://image.tmdb.org/t/p/w500" + item.getPosterPath();
-            item.setPosterPath(imagePath);
+            item.setFinalPosterPath(imagePath);
             itemView.setMovie(item);
             itemView.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
